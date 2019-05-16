@@ -1,0 +1,88 @@
+
+
+bot.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    let memberavatar = member.user.avatarURL
+        3if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('welcome to the OK TRIVIA 2.0')
+        .addField('Welcome!', `Welcome to the server, ${member}`)        
+        .addField('Your are the member', `${member.guild.memberCount}`)
+        .addField("Name", `<@` + `${member.id}` + `>`, true)
+        .setFooter("Made with ❤️ by chetan and sagar")
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
+
+bot.on('guildMemberAdd', member => {
+
+    console.log(`${member}`, "has joined" + `${member.guild.name}`)
+
+});
+
+bot.on('guildMemberRemove', member => {
+    let channel = member.guild.channels.find('name', 'welcome');
+    let memberavatar = member.user.avatarURL
+        if (!channel) return;
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('Name:', `${member}`)
+        .addField('Has Let the Server',   '😞') 
+        .addField('Bye Bye 👋 :(', 'We will all miss you!')
+        .addField('The server now as', `${member.guild.memberCount}` + " members")
+        .setFooter("Made with ❤️ by chetan")
+        .setTimestamp()
+
+        channel.sendEmbed(embed);
+});
+
+bot.on('guildMemberRemove', member => {
+    console.log(`${member}` + "has left" + `${member.guild.name}` + "Sending leave message now")
+    console.log("Leave Message Sent")
+});
+
+bot.on("message", async message =>{
+	if(message.author.bot) return;
+
+	let prefix = "/";
+	let messageArray = message.content.split(' ');
+	let cmd = messageArray[0];
+	let args = messageArray.slice(1);
+
+
+	if (cmd ===`${prefix}end` || cmd ===`${prefix}end`) {
+		 message.channel.send("@everyone @TRIVIA FRIENDS game has ended now add screen shots compulsory guys").then(function (message) {
+              message.react("👍");
+            })
+		}
+	
+});
+
+
+
+
+
+bot.on("message", async message =>{
+	if(message.author.bot) return;
+
+	let prefix = "+";
+	let messageArray = message.content.split(' ');
+	let cmd = messageArray[0];
+	let args = messageArray.slice(1);
+
+
+	if (cmd ===`${prefix}end` || cmd ===`${prefix}start`) {
+		 message.channel.send("@everyone game has started now react fast").then(function (message) {
+              message.react("0⃣");
+            })
+		}
+	
+ });
+
+
+
+bot.login("NTc4MDkzOTc1NjM5MTYyODky.XN2Ang.yV03TDdHEVK5yNIZeU-r2wkxAcE")
